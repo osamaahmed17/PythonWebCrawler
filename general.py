@@ -11,8 +11,8 @@ create_project_dir("TestFile")
 
 #create queue and crawl files(if not created)
 def create_data_files(project_name,base_url):
-        queue= project_name+'queue.txt' #This file would contain all the links of the website waiting to be crawled
-        crawled =project_name+'crawled.txt' #This file would contain all the links of the website which have been crawled
+        queue= project_name+'/queue.txt' #This file would contain all the links of the website waiting to be crawled
+        crawled =project_name+'/crawled.txt' #This file would contain all the links of the website which have been crawled
         if not os.path.isfile(queue):
                 write_file(queue,base_url)
         if not os.path.isfile(crawled):
@@ -24,4 +24,9 @@ def write_file(path,data):
         f=open(path,'w')
         f.write(data)
         f.close()
+
+#Add data into existing file
+def append_to_file(path,data):
+        with open(path,a) as file:
+                file.write(data+'\n')
         
